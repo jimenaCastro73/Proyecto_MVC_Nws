@@ -18,10 +18,10 @@ require __DIR__ . '/vendor/autoload.php';
 session_start();
 
 try {
-    Site::configure();
-    $pageRequest = Site::getPageRequest();
-    $instance = new $pageRequest();
-    $instance->run();
+    Site::configure(); //levanta la configuracion base
+    $pageRequest = Site::getPageRequest(); //devuelve segun los params del encabezado cual debe ser la clase del controlador que se va a levantar
+    $instance = new $pageRequest(); 
+    $instance->run(); //todos los controladores tienen el metodo run
     die();
 } catch (\Controllers\PrivateNoAuthException $ex) {
     $instance = new \Controllers\NoAuth();
