@@ -18,7 +18,7 @@ abstract class Table
     private static $_bindMapping = array(
         "boolean" => \PDO::PARAM_BOOL,
         "integer" => \PDO::PARAM_INT,
-        "double"  => \PDO::PARAM_STR,
+        "double" => \PDO::PARAM_STR,
         "string" => \PDO::PARAM_STR,
         "array" => \PDO::PARAM_STR,
         "object" => \PDO::PARAM_STR,
@@ -63,13 +63,13 @@ abstract class Table
         } else {
             $pConn = self::getConn();
         }
-        $query = $pConn->prepare($sqlstr);
-        foreach ($params as $key=>&$value) {
-            $query->bindParam(":".$key, $value, self::getBindType($value));
-        }
+        $query = $pConn->prepare($sqlstr); //preparar el query que se va a mandar, la primera ejecucion se puede tardar pero las siguientes no porque ya tiene la estructura cargada
+        foreach ($params as $key => &$value) {
+            $query->bindParam(":" . $key, $value, self::getBindType($value));
+        } // a este ejecucion estos son los parametros de sql
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
-        return $query->fetchAll();
+        $query->setFetchMode(\PDO::FETCH_ASSOC); //la forma en la que se extrae la info será en un arreglo asociativo, el nombre de la columna sera la llave con su valor
+        return $query->fetchAll(); // los trae todos
     }
 
     protected static function obtenerUnRegistro($sqlstr, $params, &$conn = null)
@@ -90,7 +90,7 @@ abstract class Table
         return $query->fetch();
     }
 
-    protected static function executeNonQuery($sqlstr, $params,  &$conn = null)
+    protected static function executeNonQuery($sqlstr, $params, &$conn = null)
     {
         $pConn = null;
         if ($conn != null) {
@@ -120,5 +120,4 @@ abstract class Table
         }
     }
 }
-
 ?>
