@@ -1,36 +1,35 @@
-<h1>Ofertas del Día</h1>
 <div class="product-list">
+    <h2>Ofertas del Día</h2>
     {{foreach productsOnSale}}
-    <div class="product" data-productId="{{productId}}">
+    <div class="product">
         <img src="{{productImgUrl}}" alt="{{productName}}">
-        <h2>{{productName}}</h2>
-        <p>{{productDescription}}</p>
-        <span class="price">{{productPrice}}</span>
-        <button class="add-to-cart">Agregar al Carrito</button>
+        <p>{{productName}}</p>
+        <span class="price">${{productPrice}}</span>
+        <button class="add-to-cart">Agregar al carrito</button>
     </div>
     {{endfor productsOnSale}}
 </div>
-<h1>Destacados</h1>
+
 <div class="product-list">
+    <h2>Productos Destacados</h2>
     {{foreach productsHighlighted}}
-    <div class="product" data-productId="{{productId}}">
+    <div class="product">
         <img src="{{productImgUrl}}" alt="{{productName}}">
-        <h2>{{productName}}</h2>
-        <p>{{productDescription}}</p>
-        <span class="price">{{productPrice}}</span>
-        <button class="add-to-cart">Agregar al Carrito</button>
+        <p>{{productName}}</p>
+        <span class="price">${{productPrice}}</span>
+        <button class="add-to-cart">Agregar al carrito</button>
     </div>
     {{endfor productsHighlighted}}
 </div>
-<h1>Novedades</h1>
+
 <div class="product-list">
+    <h2>Nuevos Productos</h2>
     {{foreach productsNew}}
-    <div class="product" data-productId="{{productId}}">
+    <div class="product">
         <img src="{{productImgUrl}}" alt="{{productName}}">
-        <h2>{{productName}}</h2>
-        <p>{{productDescription}}</p>
-        <span class="price">{{productPrice}}</span>
-        <button class="add-to-cart">Agregar al Carrito</button>
+        <p>{{productName}}</p>
+        <span class="price">${{productPrice}}</span>
+        <button class="add-to-cart">Agregar al carrito</button>
     </div>
     {{endfor productsNew}}
 </div>
